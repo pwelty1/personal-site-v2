@@ -69,7 +69,6 @@ export default function Navigationbar(props: NavBarProps) {
             color: "secondary.main",
           },
           "& button:focus": {
-            color: "secondary.main",
             outline: "none",
           },
           "& .MuiTab-root": {
