@@ -1,33 +1,30 @@
-import React, { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useState } from "react";
 import styles from "./LavaLamp.module.css";
 import classNames from "classnames";
 import LavaBlob from "./LavaBlob";
-//TODO: Add a gradient to the lava lamp
-//TODO: make a dynamic amount of circles and animation delay and size
+import { getRndInteger } from "../../util/randomInt/randomInt";
 
-export function getRndInteger(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+//TODO: Add a gradient to the lava lamp
 
 export default function LavaLamp() {
   const count = getRndInteger(10, 20);
-  const [color, setColor] = useState("#9bfdd1");
+  const [color] = useState("#9bfdd1");
   const blobs = useMemo(() => {
     return Array.from({ length: count }, () => (
       <LavaBlob key={Math.random()} />
     ));
   }, [count]);
 
-  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setColor(e.target.value);
-    const element = document.getElementById("lava"); // or any specific element
-    if (element) {
-      element.style.setProperty("--lamp-color", color);
-    }
-    console.log(e.target.value);
-  };
+  // const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setColor(e.target.value);
+  //   const element = document.getElementById("lava"); // or any specific element
+  //   if (element) {
+  //     element.style.setProperty("--lamp-color", color);
+  //   }
+  //   console.log(e.target.value);
+  // };
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     const element = document.getElementById("lava"); // or any specific element
     if (element) {
       element.style.setProperty("--lamp-color", color);
@@ -36,12 +33,12 @@ export default function LavaLamp() {
 
   return (
     <div>
-      <input
+      {/* <input
         className={styles.colorInput}
         type="color"
         value={color}
         onChange={handleColorChange}
-      ></input>
+      ></input> */}
       <div className={styles.container} id="lava">
         <div className={styles.lava} key={1}>
           <div className={classNames(styles.bottom, styles.gradient)}></div>

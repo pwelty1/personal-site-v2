@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { getRndInteger } from "./Lavalamp";
+import { getRndInteger } from "../../util/randomInt/randomInt";
 import styles from "./LavaLamp.module.css";
 import classNames from "classnames";
 

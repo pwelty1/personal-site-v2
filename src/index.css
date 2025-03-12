@@ -66,3 +66,28 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@font-face {
+  font-family: "simplificasimplifica";
+  src: url("./fonts/Simplifica_font/simplifica_typeface-webfont.woff2")
+      format("woff2"),
+    url("./fonts/Simplifica_font/simplifica_typeface-webfont.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "finland_roundedthin";
+  src: url("./fonts/Finland_font/finland_rounded_thin-webfont.eot");
+  src: url("./fonts/Finland_font/finland_rounded_thin-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./fonts/Finland_font/finland_rounded_thin-webfont.woff2")
+      format("woff2"),
+    url("./fonts/Finland_font/finland_rounded_thin-webfont.woff") format("woff"),
+    url("./fonts/Finland_font/finland_rounded_thin-webfont.ttf")
+      format("truetype"),
+    url("./fonts/Finland_font/finland_rounded_thin-webfont.svg#finland_roundedthin")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
