@@ -65,9 +65,6 @@ export default function Navigationbar(props: NavBarProps) {
             height: "3px",
             borderRadius: "5px",
           },
-          "& .Mui-selected": {
-            color: "secondary.main",
-          },
           "& button:focus": {
             outline: "none",
           },
@@ -79,10 +76,10 @@ export default function Navigationbar(props: NavBarProps) {
         {/* <IconButton type="button" color="secondary" size="large">
           <MenuIcon />
         </IconButton> */}
-        <Tabs value={activeTab} onChange={handleChange} sx={{}}>
-          <Tab label="Home" sx={{ color: "secondary.main" }} />
-          <Tab label="About" sx={{ color: "secondary.main" }} />
-          <Tab label="Contact" sx={{ color: "secondary.main" }} />
+        <Tabs value={activeTab} textColor="secondary" onChange={handleChange}>
+          <Tab label="Home" />
+          <Tab label="About" />
+          <Tab label="Contact" />
         </Tabs>
         <IconButton type="button" color="secondary" size="large">
           <Person />
