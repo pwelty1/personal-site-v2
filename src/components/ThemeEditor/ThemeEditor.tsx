@@ -1,7 +1,7 @@
 import { DialogTitle, DialogContent, TextField } from "@mui/material";
 import { Dialog } from "@mui/material";
 import { useState, useCallback } from "react";
-import { closestColor } from "../../util/closestColor/closestColor";
+import { closestColor, hexToRgb } from "../../util/closestColor/closestColor";
 // import { closestColor } from "../../util/closestColor/closestColor";
 import * as colors from "@mui/material/colors";
 export default function BackgroundEditor(props: {
@@ -23,11 +23,15 @@ export default function BackgroundEditor(props: {
       ];
       console.log(colorsArray);
       const closeColor = closestColor(e.target.value, colorsArray);
+      const rgb = hexToRgb(closeColor);
+      const rgbString = `${rgb.r} ${rgb.g} ${rgb.b}`;
       root.style.setProperty("--primary-color", closeColor);
       window.localStorage.setItem("primaryColor", closeColor);
       root.style.setProperty("--mui-palette-primary-main", closeColor);
       root.style.setProperty("--mui-palette-secondary-main", closeColor);
       root.style.setProperty("--mui-palette-text-primary", closeColor);
+      root.style.setProperty("--mui-palette-primary-mainChannel", rgbString);
+      root.style.setProperty("--mui-palette-secondary-mainChannel", rgbString);
       window.localStorage.setItem("lampColor", e.target.value);
     },
     [root]

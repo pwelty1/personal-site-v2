@@ -16,7 +16,7 @@ export function closestColor(targetColor: string, colorPalette: string[]) {
   return closest;
 }
 
-function hexToRgb(hex: string) {
+export function hexToRgb(hex: string): RGB {
   const sanitizedHex = hex.replace("#", "");
   const r = parseInt(sanitizedHex.substring(0, 2), 16);
   const g = parseInt(sanitizedHex.substring(2, 4), 16);

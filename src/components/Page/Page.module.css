@@ -1,8 +1,12 @@
 .pageContainer {
-  width: 80%;
+  width: calc(80% - 4rem);
   position: fixed;
   top: 45px;
   left: 50%;
-  height: calc(100vh - 48px);
+  height: calc(100vh - 5rem);
   transform: translateX(-50%);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
+  overflow-y: auto;
 }
