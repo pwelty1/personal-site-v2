@@ -1,8 +1,8 @@
-.navContainer {
+.pageContainer {
   width: 80%;
   position: fixed;
-  top: 0;
+  top: 45px;
   left: 50%;
-  z-index: 1;
+  height: calc(100vh - 48px);
   transform: translateX(-50%);
 }

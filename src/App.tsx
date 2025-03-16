@@ -1,19 +1,9 @@
-import LavaLamp from "./components/Lavalamp/Lavalamp";
+import LavaLamp from "./components/Lavalamp";
 import { Routes, Route } from "react-router";
-import NavBar from "./components/NavBar/NavBar";
-import { createTheme } from "@mui/material";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#212121",
-    },
-    secondary: {
-      main: "#1de9b6",
-      contrastText: "#fafa",
-    },
-  },
-});
+import NavBar from "./components/NavBar";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -21,7 +11,11 @@ function App() {
       <NavBar currentPage={{ pathname: window.location.pathname }} />
       <LavaLamp />
       <Routes>
-        <Route path="/" element={<></>} />
+        <Route path="/">
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Route>
       </Routes>
     </>
   );

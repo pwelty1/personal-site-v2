@@ -29,6 +29,7 @@ export default function LavaLamp() {
     if (element) {
       element.style.setProperty("--lamp-color", color);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

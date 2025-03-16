@@ -60,7 +60,7 @@ export default function Navigationbar(props: NavBarProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
     switch (newValue) {
       case HOME:
@@ -89,13 +89,8 @@ export default function Navigationbar(props: NavBarProps) {
           justifyContent: "space-between",
           borderRadius: "5px",
           "& .MuiTabs-indicator": {
-            backgroundColor: "secondary.main",
             height: "5px",
             borderRadius: "5px",
-            filter: "blur(1px)",
-          },
-          "& button:focus": {
-            outline: "none",
           },
         }}
       >
@@ -148,7 +143,13 @@ export default function Navigationbar(props: NavBarProps) {
           </IconButton>
           <List>
             <ListItem sx={{}}>
-              <ListItemButton onClick={() => navigate("/home")}>
+              <ListItemButton
+                onClick={() => {
+                  navigate("/home");
+                  setActiveTab(0);
+                  setOpen(false);
+                }}
+              >
                 <ListItemIcon>
                   <Home color="primary" />
                 </ListItemIcon>
@@ -156,7 +157,13 @@ export default function Navigationbar(props: NavBarProps) {
               </ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemButton onClick={() => navigate("/about")}>
+              <ListItemButton
+                onClick={() => {
+                  navigate("/about");
+                  setActiveTab(1);
+                  setOpen(false);
+                }}
+              >
                 <ListItemIcon>
                   <Info color="primary" />
                 </ListItemIcon>
@@ -164,7 +171,13 @@ export default function Navigationbar(props: NavBarProps) {
               </ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemButton onClick={() => navigate("/contact")}>
+              <ListItemButton
+                onClick={() => {
+                  navigate("/contact");
+                  setActiveTab(2);
+                  setOpen(false);
+                }}
+              >
                 <ListItemIcon>
                   <Send color="primary" />
                 </ListItemIcon>

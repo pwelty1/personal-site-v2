@@ -49,25 +49,15 @@ button {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+:root {
+  --primary-color: #1de9b6;
+  --secondary-color: #1de9b6;
+  --background-color: #212121;
+  --paper-background-color: rgba(33, 33, 33, 0.8);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-@font-face {
+/* @font-face {
   font-family: "simplificasimplifica";
   src: url("./fonts/Simplifica_font/simplifica_typeface-webfont.woff2")
       format("woff2"),
@@ -90,4 +80,4 @@ button:focus-visible {
       format("svg");
   font-weight: normal;
   font-style: normal;
-}
+} */
