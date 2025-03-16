@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { AppBar, Tabs, Tab, IconButton } from "@mui/material";
 import { useNavigate } from "react-router";
 import styles from "./Navbar.module.css";
-import { Person } from "@mui/icons-material";
+import { Menu, Person } from "@mui/icons-material";
 const HOME = 0;
 const ABOUT = 1;
 const CONTACT = 2;
@@ -30,7 +30,22 @@ export default function Navigationbar(props: NavBarProps) {
   };
 
   const curP = initialPage(currentPage.pathname);
-  const [activeTab, setActiveTab] = React.useState(curP);
+  const [activeTab, setActiveTab] = useState(curP);
+  const [width, setWidth] = useState(
+    Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+  );
+
+  useEffect(() => {
+    const handleResize = () =>
+      setWidth(
+        Math.max(
+          document.documentElement.clientWidth || 0,
+          window.innerWidth || 0
+        )
+      );
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
@@ -62,25 +77,27 @@ export default function Navigationbar(props: NavBarProps) {
           borderRadius: "5px",
           "& .MuiTabs-indicator": {
             backgroundColor: "secondary.main",
-            height: "3px",
+            height: "5px",
             borderRadius: "5px",
+            filter: "blur(1px)",
           },
           "& button:focus": {
             outline: "none",
           },
-          "& .MuiTab-root": {
-            color: "secondary.main",
-          },
         }}
       >
-        {/* <IconButton type="button" color="secondary" size="large">
-          <MenuIcon />
-        </IconButton> */}
-        <Tabs value={activeTab} textColor="secondary" onChange={handleChange}>
-          <Tab label="Home" />
-          <Tab label="About" />
-          <Tab label="Contact" />
-        </Tabs>
+        {width <= 1000 && (
+          <IconButton type="button" color="secondary" size="large">
+            <Menu />
+          </IconButton>
+        )}
+        {width > 1000 && (
+          <Tabs value={activeTab} textColor="inherit" onChange={handleChange}>
+            <Tab label="Home" />
+            <Tab label="About" />
+            <Tab label="Contact" />
+          </Tabs>
+        )}
         <IconButton type="button" color="secondary" size="large">
           <Person />
         </IconButton>
