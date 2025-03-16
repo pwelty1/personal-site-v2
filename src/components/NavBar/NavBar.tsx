@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from "react";
 
-import { AppBar, Tabs, Tab, IconButton } from "@mui/material";
+import {
+  AppBar,
+  Tabs,
+  Tab,
+  IconButton,
+  ListItemText,
+  List,
+  ListItemButton,
+  ListItem,
+  Box,
+  ListItemIcon,
+  SwipeableDrawer,
+} from "@mui/material";
 import { useNavigate } from "react-router";
 import styles from "./Navbar.module.css";
-import { Menu, Person } from "@mui/icons-material";
+import { Close, Home, Info, Menu, Person, Send } from "@mui/icons-material";
 const HOME = 0;
 const ABOUT = 1;
 const CONTACT = 2;
@@ -14,7 +26,7 @@ interface NavBarProps {
 
 export default function Navigationbar(props: NavBarProps) {
   const { currentPage } = props;
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const initialPage = (pathname: string) => {
     switch (pathname) {
@@ -31,6 +43,7 @@ export default function Navigationbar(props: NavBarProps) {
 
   const curP = initialPage(currentPage.pathname);
   const [activeTab, setActiveTab] = useState(curP);
+  const [open, setOpen] = useState(false);
   const [width, setWidth] = useState(
     Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
   );
@@ -51,13 +64,13 @@ export default function Navigationbar(props: NavBarProps) {
     setActiveTab(newValue);
     switch (newValue) {
       case HOME:
-        history("/home");
+        navigate("/home");
         break;
       case ABOUT:
-        history("/about");
+        navigate("/about");
         break;
       case CONTACT:
-        history("/contact");
+        navigate("/contact");
         break;
       default:
         break;
@@ -87,7 +100,12 @@ export default function Navigationbar(props: NavBarProps) {
         }}
       >
         {width <= 1000 && (
-          <IconButton type="button" color="secondary" size="large">
+          <IconButton
+            type="button"
+            color="secondary"
+            size="large"
+            onClick={() => setOpen(true)}
+          >
             <Menu />
           </IconButton>
         )}
@@ -102,6 +120,60 @@ export default function Navigationbar(props: NavBarProps) {
           <Person />
         </IconButton>
       </AppBar>
+      <SwipeableDrawer
+        anchor="left"
+        open={open}
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+        sx={{}}
+      >
+        <Box
+          sx={{
+            width: "300px",
+            "& button:focus": {
+              outline: "none",
+            },
+          }}
+        >
+          <IconButton
+            onClick={() => setOpen(false)}
+            color="secondary"
+            sx={{
+              position: "relative",
+              left: "calc(100% - 55px)",
+              marginTop: "10px",
+            }}
+          >
+            <Close />
+          </IconButton>
+          <List>
+            <ListItem sx={{}}>
+              <ListItemButton onClick={() => navigate("/home")}>
+                <ListItemIcon>
+                  <Home color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Home" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton onClick={() => navigate("/about")}>
+                <ListItemIcon>
+                  <Info color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="About" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton onClick={() => navigate("/contact")}>
+                <ListItemIcon>
+                  <Send color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Contact" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Box>
+      </SwipeableDrawer>
     </div>
   );
 }
