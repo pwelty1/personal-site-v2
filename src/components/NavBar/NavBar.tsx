@@ -12,10 +12,20 @@ import {
   Box,
   ListItemIcon,
   SwipeableDrawer,
+  Divider,
 } from "@mui/material";
 import { useNavigate } from "react-router";
 import styles from "./Navbar.module.css";
-import { Close, Home, Info, Menu, Person, Send } from "@mui/icons-material";
+import {
+  Close,
+  Home,
+  Info,
+  Menu,
+  Palette,
+  Person,
+  Send,
+} from "@mui/icons-material";
+import ThemeEditor from "../ThemeEditor/ThemeEditor";
 const HOME = 0;
 const ABOUT = 1;
 const CONTACT = 2;
@@ -44,6 +54,7 @@ export default function Navigationbar(props: NavBarProps) {
   const curP = initialPage(currentPage.pathname);
   const [activeTab, setActiveTab] = useState(curP);
   const [open, setOpen] = useState(false);
+  const [themeEditorOpen, setThemeEditorOpen] = useState(false);
   const [width, setWidth] = useState(
     Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
   );
@@ -185,8 +196,27 @@ export default function Navigationbar(props: NavBarProps) {
               </ListItemButton>
             </ListItem>
           </List>
+
+          <Divider />
+          <List>
+            <ListItem>
+              <ListItemButton onClick={() => setThemeEditorOpen(true)}>
+                <ListItemIcon>
+                  <Palette color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Edit Theme" />
+              </ListItemButton>
+            </ListItem>
+          </List>
         </Box>
       </SwipeableDrawer>
+      <ThemeEditor
+        open={themeEditorOpen}
+        onClose={() => {
+          setThemeEditorOpen(false);
+          setOpen(false);
+        }}
+      />
     </div>
   );
 }
