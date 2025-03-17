@@ -6,8 +6,9 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
-
+import FinlandWoff from "./assets/fonts/finland-webfont/Finland-Regular.woff";
 function App() {
+  console.log(FinlandWoff);
   const defaultPrimaryColor =
     window.localStorage.getItem("primaryColor") ??
     getComputedStyle(document.documentElement).getPropertyValue(
@@ -15,6 +16,29 @@ function App() {
     );
 
   const theme = {
+    typography: {
+      fontFamily: "Finland Regular",
+      fontSize: 16,
+      button: {
+        fontSize: "1.5rem",
+        letterSpacing: 2,
+      },
+      body1: {
+        fontSize: "1.5rem",
+        letterSpacing: 1,
+      },
+      body2: {
+        fontSize: "1.2rem",
+        letterSpacing: 1,
+      },
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: { letterSpacing: 2 },
+        },
+      },
+    },
     cssVariables: true,
     palette: {
       mode: "dark" as const,

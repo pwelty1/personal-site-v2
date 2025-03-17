@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Page>
       <Typography variant="h1">Home</Typography>
-      <p>
+      <Typography variant="body1">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare,
         diam vitae varius faucibus, magna nunc interdum lectus, pulvinar
         volutpat libero justo ut justo. Aenean nibh dolor, scelerisque at
@@ -189,7 +189,7 @@ export default function Home() {
         amet consequat eros suscipit et. Vivamus ut mattis eros. Sed eget dui
         sed justo egestas ultrices eu vitae urna. Generated 20 paragraphs, 1849
         words, 12519 bytes of Lorem Ipsum
-      </p>
+      </Typography>
     </Page>
   );
 }

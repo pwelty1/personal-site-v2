@@ -14,6 +14,7 @@ export default function BackgroundEditor(props: {
     window.localStorage.getItem("lampColor") ??
       getComputedStyle(root).getPropertyValue("--lamp-color")
   );
+
   const handleColorChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setColor(e.target.value);
@@ -36,6 +37,7 @@ export default function BackgroundEditor(props: {
     },
     [root]
   );
+
   return (
     <Dialog open={props.open} onClose={props.onClose}>
       <DialogTitle>Edit Theme</DialogTitle>
