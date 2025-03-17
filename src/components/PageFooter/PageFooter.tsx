@@ -1,12 +1,17 @@
-import { GitHub, LinkedIn } from "@mui/icons-material";
+import { GitHub, LinkedIn, KeyboardArrowUp } from "@mui/icons-material";
 import { ButtonGroup, IconButton } from "@mui/material";
 import React from "react";
 import DiscordIcon from "../../assets/svg/discord.svg?react";
 import styles from "./PageFooter.module.css";
 
-export default function PageFooter() {
+export default function PageFooter(props: { closePage: () => void }) {
   return (
     <footer className={styles.pageFooter}>
+      <ButtonGroup>
+        <IconButton color="primary" onClick={props.closePage}>
+          <KeyboardArrowUp />
+        </IconButton>
+      </ButtonGroup>
       <ButtonGroup className={styles.buttonGroup}>
         <IconButton color="primary">
           <GitHub />
