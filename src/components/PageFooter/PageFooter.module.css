@@ -1,0 +1,28 @@
+.pageFooter {
+  position: fixed;
+  bottom: 3.5rem;
+  border-radius: 0 0 5px 5px;
+  width: calc(100% - 0.8rem);
+  box-shadow: var(--mui-shadows-4);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-top: 1px solid var(--mui-palette-divider);
+  background-image: var(--mui-overlays-4);
+  background-color: var(--paper-background-color);
+  padding: 0.4rem;
+}
+
+.buttonGroup > button {
+  margin: 0 0.2rem;
+  /* border: 1px solid var(--mui-palette-primary-main); */
+}
+
+.buttonGroup > button:last-child {
+  margin-right: 2rem;
+}
+
+.buttonGroup {
+  margin-right: 2rem;
+  position: relative;
+  left: 100%;
+  transform: translateX(-100%);
+}

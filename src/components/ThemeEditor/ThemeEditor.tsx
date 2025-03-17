@@ -19,13 +19,15 @@ export default function BackgroundEditor(props: {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setColor(e.target.value);
       root.style.setProperty("--lamp-color", e.target.value);
-      const colorsArray = [
+
+      const colorPaletteArray = [
         ...Object.values(colors).flatMap((color) => Object.values(color)),
       ];
-      console.log(colorsArray);
-      const closeColor = closestColor(e.target.value, colorsArray);
+
+      const closeColor = closestColor(e.target.value, colorPaletteArray);
       const rgb = hexToRgb(closeColor);
       const rgbString = `${rgb.r} ${rgb.g} ${rgb.b}`;
+
       root.style.setProperty("--primary-color", closeColor);
       window.localStorage.setItem("primaryColor", closeColor);
       root.style.setProperty("--mui-palette-primary-main", closeColor);

@@ -1,12 +1,17 @@
-.pageContainer {
-  width: calc(80% - 4rem);
-  position: fixed;
-  top: 3.3rem;
-  left: 50%;
-  height: calc(100vh - 6rem);
-  transform: translateX(-50%);
+.childContainer {
+  width: calc(100% - 4rem);
+  height: calc(100vh - 8.9rem);
   padding-left: 2rem;
   padding-right: 2rem;
   padding-bottom: 2rem;
   overflow-y: auto;
+}
+
+.pageContainer {
+  width: 80%;
+  top: 3.3rem;
+  position: fixed;
+  left: 50%;
+  height: 100vh;
+  transform: translate(-50%, 0);
 }

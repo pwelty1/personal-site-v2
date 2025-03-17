@@ -21,7 +21,7 @@ function App() {
       fontSize: 16,
       button: {
         fontSize: "1.5rem",
-        letterSpacing: 2,
+        letterSpacing: 3,
       },
       body1: {
         fontSize: "1.5rem",
